@@ -12,20 +12,67 @@
         <p class="eyebrow">小学生向け国語教材</p>
         <h1>国語プリント集</h1>
       </div>
-      <div class="stats" aria-live="polite">
-        <strong id="visibleCount">0</strong>
-        <span>/</span>
-        <span id="totalCount">0</span>
-        <span>件</span>
+      <div class="top-actions">
+        <nav class="nav-tabs" aria-label="ページ">
+          <a href="#home" id="homeLink">Home</a>
+          <a href="#gallery" id="galleryLink">Gallery</a>
+        </nav>
+        <div class="stats" aria-live="polite">
+          <strong id="visibleCount">0</strong>
+          <span>/</span>
+          <span id="totalCount">0</span>
+          <span>件</span>
+        </div>
       </div>
     </header>
 
-    <main class="app-shell">
+    <main id="homePage" class="home-page" hidden>
+      <section class="home-summary">
+        <div>
+          <p class="eyebrow">更新情報</p>
+          <h2>最近追加・更新されたプリント</h2>
+        </div>
+        <a class="open-link" href="#gallery">プリントを見る</a>
+      </section>
+
+      <section class="home-grid">
+        <div class="home-panel">
+          <div class="panel-header">
+            <h3>新着プリント</h3>
+            <p id="homeUpdateCount">読み込み中</p>
+          </div>
+          <div id="recentUpdates" class="home-list"></div>
+        </div>
+
+        <div class="home-panel">
+          <div class="panel-header">
+            <h3>プリントの種類</h3>
+            <p>探す前の見取り図</p>
+          </div>
+          <div id="homeOverview" class="overview-list"></div>
+        </div>
+
+        <div class="home-panel comments-panel">
+          <div class="panel-header">
+            <h3>コメント集約</h3>
+            <p id="commentStatus">GitHub Issuesから取得</p>
+          </div>
+          <div id="commentFeed" class="home-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <main id="galleryPage" class="app-shell">
       <aside class="sidebar" aria-label="プリント検索">
         <label class="search">
           <span>検索</span>
-          <input id="searchInput" type="search" placeholder="例: 説明文、漢字、手紙">
+          <input id="searchInput" type="search" placeholder="単元名・タイトルで検索">
         </label>
+
+        <section class="filter-group" aria-labelledby="topicHeading">
+          <h2 id="topicHeading">よく使う検索</h2>
+          <div class="chips" id="topicFilters"></div>
+        </section>
 
         <section class="filter-group" aria-labelledby="gradeHeading">
           <h2 id="gradeHeading">学年</h2>
@@ -45,6 +92,11 @@
             <button class="chip" type="button" data-answer="answer">解答</button>
           </div>
         </section>
+
+        <section class="filter-group" aria-labelledby="overviewHeading">
+          <h2 id="overviewHeading">あるプリント</h2>
+          <div id="sidebarOverview" class="sidebar-overview"></div>
+        </section>
       </aside>
 
       <section class="library" aria-label="プリント一覧">
@@ -61,7 +113,10 @@
             <p id="viewerMeta">プリントを選択</p>
             <h2 id="viewerTitle">一覧からPDFを選んでください</h2>
           </div>
-          <a id="openLink" class="open-link disabled" href="#" target="_blank" rel="noreferrer">別タブで開く</a>
+          <div class="viewer-actions">
+            <a id="commentLink" class="ghost-link disabled" href="#" target="_blank" rel="noreferrer">コメント</a>
+            <a id="openLink" class="open-link disabled" href="#" target="_blank" rel="noreferrer">別タブで開く</a>
+          </div>
         </div>
         <iframe id="pdfFrame" title="PDFプレビュー"></iframe>
       </section>
