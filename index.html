@@ -101,7 +101,10 @@
 
       <section class="library" aria-label="プリント一覧">
         <div class="library-toolbar">
-          <p id="currentSummary">読み込み中です</p>
+          <div>
+            <p id="gradeIndicator" class="grade-indicator"></p>
+            <p id="currentSummary">読み込み中です</p>
+          </div>
           <button id="resetButton" class="ghost-button" type="button">条件をリセット</button>
         </div>
         <div id="printList" class="print-list"></div>
@@ -123,6 +126,6 @@
       </section>
     </main>
 
-    <script src="./app.js"></script>
+    <script src="./app.js?v=2"></script>
   </body>
 </html>

@@ -39,6 +39,7 @@ const openLink = document.querySelector("#openLink");
 const commentLink = document.querySelector("#commentLink");
 const closeViewer = document.querySelector("#closeViewer");
 const viewer = document.querySelector(".viewer");
+const gradeIndicator = document.querySelector("#gradeIndicator");
 
 function isMobile() {
   return window.innerWidth <= 760;
@@ -58,9 +59,10 @@ function unique(values) {
 function makeChip(label, value, target, activeValue) {
   const button = document.createElement("button");
   button.type = "button";
-  button.className = `chip${value === activeValue ? " active" : ""}`;
+  const isActive = value === activeValue;
+  button.className = `chip${isActive ? " active" : ""}`;
   button.dataset[target] = value;
-  button.textContent = label;
+  button.textContent = isActive ? `✓ ${label}` : label;
   return button;
 }
 
@@ -73,6 +75,8 @@ function switchPage() {
 }
 
 function renderFilters() {
+  gradeIndicator.textContent = state.grade === "all" ? "" : state.grade;
+
   topicFilters.replaceChildren(
     ...QUICK_TOPICS.map((topic) => makeChip(topic, topic, "topic", state.query)),
   );

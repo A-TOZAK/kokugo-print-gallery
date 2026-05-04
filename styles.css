@@ -288,6 +288,15 @@ h1 {
   background: var(--accent);
   border-color: var(--accent);
   color: white;
+  font-weight: 800;
+}
+
+.grade-indicator {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-strong);
+  line-height: 1.3;
+  min-height: 1.3em;
 }
 
 .library {
