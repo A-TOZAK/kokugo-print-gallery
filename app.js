@@ -66,7 +66,7 @@ function matches(item) {
 }
 
 function fileUrl(item) {
-  return encodeURI(`./${item.file}`);
+  return encodeURI(`./public/${item.file}`);
 }
 
 function renderList() {
@@ -79,6 +79,7 @@ function renderList() {
       className: "empty",
       textContent: "条件に合うプリントがありません。",
     }));
+    clearViewer();
     return;
   }
 
@@ -127,6 +128,15 @@ function selectPrint(item, focus = true) {
   openLink.classList.remove("disabled");
   markActiveCard();
   if (focus) pdfFrame.scrollIntoView({ block: "nearest" });
+}
+
+function clearViewer() {
+  state.selectedId = null;
+  viewerTitle.textContent = "条件に合うPDFがありません";
+  viewerMeta.textContent = "絞り込み条件を変更してください";
+  pdfFrame.removeAttribute("src");
+  openLink.href = "#";
+  openLink.classList.add("disabled");
 }
 
 function markActiveCard() {
