@@ -386,12 +386,16 @@ h1 {
 
 .viewer {
   display: grid;
-  grid-template-rows: auto minmax(520px, 1fr);
+  grid-template-rows: auto 1fr;
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
+  position: sticky;
+  top: 92px;
+  height: calc(100vh - 110px);
+  align-self: start;
 }
 
 .viewer-header {
@@ -472,6 +476,8 @@ iframe {
   .viewer {
     grid-column: 1 / -1;
     min-height: 680px;
+    position: static;
+    height: auto;
   }
 
   .print-list {

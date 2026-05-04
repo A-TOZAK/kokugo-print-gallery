@@ -176,7 +176,6 @@ function selectPrint(item, focus = true) {
   openLink.classList.remove("disabled");
   commentLink.classList.remove("disabled");
   markActiveCard();
-  if (focus) pdfFrame.scrollIntoView({ block: "nearest" });
 }
 
 function clearViewer() {
