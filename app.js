@@ -113,21 +113,14 @@ function fileUrl(item) {
   return encodeURI(`./public/${item.file}`);
 }
 
-function githubIssueUrl(item) {
-  const title = `[コメント] ${item.grade} ${item.category} ${item.title}${item.answer ? " 解答" : " 問題"}`;
-  const body = [
-    "このプリントへのコメントを書いてください。",
-    "",
-    `print-id: ${item.id}`,
-    `print-file: ${item.file}`,
-    `print-title: ${item.grade} / ${item.category} / ${item.title} / ${item.answer ? "解答" : "問題"}`,
-  ].join("\n");
+function googleFormUrl(item) {
+  const base = "https://docs.google.com/forms/d/e/1FAIpQLSfiQWRdV2DPcs3HFe36fnqUSUaUYQ2Gw2G55bY0VUN1RGRXww/viewform";
   const params = new URLSearchParams({
-    title,
-    body,
-    labels: COMMENT_LABEL,
+    "entry.434855011": item.grade,
+    "entry.1458370925": item.category,
+    "entry.185420469": `${item.title}${item.answer ? " 解答" : ""}`,
   });
-  return `https://github.com/${REPO}/issues/new?${params.toString()}`;
+  return `${base}?${params.toString()}`;
 }
 
 function renderList() {
@@ -187,7 +180,7 @@ function selectPrint(item, focus = true) {
   viewerMeta.textContent = `${item.grade} / ${item.category} / ${item.answer ? "解答" : "問題"}`;
   pdfFrame.src = fileUrl(item);
   openLink.href = fileUrl(item);
-  commentLink.href = githubIssueUrl(item);
+  commentLink.href = googleFormUrl(item);
   openLink.classList.remove("disabled");
   commentLink.classList.remove("disabled");
   markActiveCard();
