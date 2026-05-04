@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>国語プリント集</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">小学生向け国語教材</p>
+        <h1>国語プリント集</h1>
+      </div>
+      <div class="stats" aria-live="polite">
+        <strong id="visibleCount">0</strong>
+        <span>/</span>
+        <span id="totalCount">0</span>
+        <span>件</span>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="プリント検索">
+        <label class="search">
+          <span>検索</span>
+          <input id="searchInput" type="search" placeholder="例: 説明文、漢字、手紙">
+        </label>
+
+        <section class="filter-group" aria-labelledby="gradeHeading">
+          <h2 id="gradeHeading">学年</h2>
+          <div class="chips" id="gradeFilters"></div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="categoryHeading">
+          <h2 id="categoryHeading">カテゴリ</h2>
+          <div class="chips" id="categoryFilters"></div>
+        </section>
+
+        <section class="filter-group" aria-labelledby="answerHeading">
+          <h2 id="answerHeading">種類</h2>
+          <div class="chips" id="answerFilters">
+            <button class="chip active" type="button" data-answer="all">すべて</button>
+            <button class="chip" type="button" data-answer="worksheet">問題</button>
+            <button class="chip" type="button" data-answer="answer">解答</button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="library" aria-label="プリント一覧">
+        <div class="library-toolbar">
+          <p id="currentSummary">読み込み中です</p>
+          <button id="resetButton" class="ghost-button" type="button">条件をリセット</button>
+        </div>
+        <div id="printList" class="print-list"></div>
+      </section>
+
+      <section class="viewer" aria-label="PDFプレビュー">
+        <div class="viewer-header">
+          <div>
+            <p id="viewerMeta">プリントを選択</p>
+            <h2 id="viewerTitle">一覧からPDFを選んでください</h2>
+          </div>
+          <a id="openLink" class="open-link disabled" href="#" target="_blank" rel="noreferrer">別タブで開く</a>
+        </div>
+        <iframe id="pdfFrame" title="PDFプレビュー"></iframe>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
