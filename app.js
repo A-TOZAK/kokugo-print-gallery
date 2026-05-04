@@ -37,6 +37,17 @@ const viewerTitle = document.querySelector("#viewerTitle");
 const viewerMeta = document.querySelector("#viewerMeta");
 const openLink = document.querySelector("#openLink");
 const commentLink = document.querySelector("#commentLink");
+const closeViewer = document.querySelector("#closeViewer");
+const viewer = document.querySelector(".viewer");
+
+function isMobile() {
+  return window.innerWidth <= 760;
+}
+
+closeViewer.addEventListener("click", () => {
+  viewer.classList.remove("mobile-open");
+  document.body.classList.remove("viewer-open");
+});
 
 const collator = new Intl.Collator("ja", { numeric: true, sensitivity: "base" });
 
@@ -176,6 +187,10 @@ function selectPrint(item, focus = true) {
   openLink.classList.remove("disabled");
   commentLink.classList.remove("disabled");
   markActiveCard();
+  if (isMobile()) {
+    viewer.classList.add("mobile-open");
+    document.body.classList.add("viewer-open");
+  }
 }
 
 function clearViewer() {

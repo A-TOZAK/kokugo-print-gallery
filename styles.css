@@ -453,6 +453,10 @@ h1 {
   opacity: 0.45;
 }
 
+.viewer-close {
+  display: none;
+}
+
 iframe {
   width: 100%;
   height: 100%;
@@ -517,7 +521,39 @@ iframe {
     overflow: visible;
   }
 
+  .viewer-close {
+    display: inline-flex;
+    align-items: center;
+    order: -1;
+  }
+
   .viewer {
-    min-height: 620px;
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    border-radius: 0;
+    min-height: unset;
+    height: 100dvh;
+    grid-template-rows: auto 1fr;
+  }
+
+  .viewer.mobile-open {
+    display: grid;
+  }
+
+  body.viewer-open {
+    overflow: hidden;
+  }
+
+  .viewer-header {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .viewer-actions {
+    flex-wrap: wrap;
   }
 }
